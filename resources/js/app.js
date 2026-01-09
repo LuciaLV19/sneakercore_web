@@ -131,15 +131,6 @@ window.addToWishlist = function (productId) {
 };
 
 // ===============================
-// Remove notifications on page show (browsing back)
-// ===============================
-window.addEventListener("pageshow", () => {
-    const notifications = document.querySelectorAll(".notification-card");
-    notifications.forEach((alert) => alert.remove());
-});
-
-
-// ===============================
 // DOMContentLoaded — Only code that should run after the DOM is ready
 // ===============================
 document.addEventListener("DOMContentLoaded", function () {
@@ -222,9 +213,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Auto remove PHP notifications
     // ===============================
     document.querySelectorAll(".notification-card").forEach((alert) => {
+        alert.style.transition = "opacity 0.5s";
+        alert.style.opacity = "1"; 
+
         setTimeout(() => {
-            alert.style.opacity = "0";
+            alert.style.opacity = "0"; 
+
             setTimeout(() => alert.remove(), 500);
-        }, 4000);
+        }, 4000); 
     });
 });
+
