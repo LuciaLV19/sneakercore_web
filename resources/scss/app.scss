@@ -1,0 +1,441 @@
+@import url("https://fonts.bunny.net/css?family=exo-2:900,700|instrument-sans:400,500,600");
+
+//Variables
+:root {
+    /*Brand identity*/
+    --brand-primary: #6b1616;
+    --brand-primary-soft: #930202;
+    --brand-secondary: #000000;
+    --brand-secondary-soft: #333333;
+
+    /* Background colors */
+    --bg-white: #ffffff;
+    --bg-light: #f3f4f6;
+    --border-soft: #dadada;
+
+    /* Brand tipography */
+    --font-main: "Instrument Sans", sans-serif;
+    --font-title: "Exo 2", sans-serif;
+    --dark: #111827;
+    --light: #ffffff;
+    --muted: #6b7280; /* Para textos secundarios o menos importantes */
+
+    /* State and feedback colors */
+    --success: #34d399; /* Tu green */
+    --error: #f87171; /* Tu red */
+    --warning: #fba524;
+    --info: #2563eb; /* Tu blue */
+    --info-hover: #1e40af;
+
+    /* Variables to Dark Mode*/
+    --card-bg: var(--bg-white);
+    --main-text: var(--dark);
+
+    /* Inputs */
+    --input-bg: #f6f6f6;
+    --input-text: #1f2937;
+    --input-border: #e8ecef;
+    --input-placeholder: #9ca3af;
+    --input-bg-focus: #ffffff;
+}
+
+html.dark {
+    --bg-light: #1e293b;
+    --bg-white: #222b38;
+    --dark: #d6d6d6;
+    --light: #c8ced9;
+    --muted: #7a808d;
+    --border-soft: #374151;
+    --card-bg: var(--bg-white);
+    --brand-primary: rgb(190, 52, 52);
+    --brand-primary-soft: rgb(196, 76, 76);
+    --brand-secondary: #060625;
+    --brand-secondary-soft: #222228;
+    --success: #20946a;
+    --error: #b05151;
+    --warning: #ca841c;
+    --info: #2552b3;
+    --info-hover: #1e3b9b;
+    --input-bg: #1b232e;
+    --input-bg-focus: #111827;
+    --input-text: #e5e7eb;
+    --input-border: #374151;
+    --input-placeholder: #8991a1;
+}
+
+/*============================ */
+// BADGES LOW STOCK Y SOLD OUT
+/*============================ */
+.low-stock-badge {
+    // Positioning
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 20;
+
+    // Design
+    background: linear-gradient(
+        135deg,
+        var(--warning) 0%,
+        #f96516 100%
+    ); 
+    color: #ffffff;
+    padding: 4px 10px;
+    border-radius: 6px;
+
+    // Typography
+    font-family: var(--font-main);
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    // Shadow and depth
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    // Avoid user selection or interference with click
+    pointer-events: none;
+    white-space: nowrap;
+
+    // Animation
+    animation: pulse-orange 2s infinite;
+}
+
+// Animation keyframes
+@keyframes pulse-orange {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(251, 165, 36, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 6px rgba(251, 165, 36, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(251, 165, 36, 0);
+    }
+}
+
+.sold-out-badge {
+    // Design
+    background: #111827; 
+    color: var(--light);
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    transform: rotate(-3deg);
+
+    // Typography
+    font-family: var(--font-title);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.75rem;
+
+}
+
+/* ============================
+   FORMULARIO GENERAL
+============================ */
+.form-card {
+    background-color: var(--bg-light);
+    padding: 2rem;
+    width: 90%;
+    border-radius: 0.75rem;
+    margin: 2rem auto;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    color: var(--light);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .form-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        flex: 1 1 200px;
+        margin-bottom: 1.2rem;
+
+        .password-wrapper,
+        .percentage-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            input {
+                width: 100%;
+                padding-right: 2.5rem;
+            }
+
+            .togglePassword,
+            .icon {
+                position: absolute;
+                right: 0.75rem;
+                display: flex;
+                align-items: center;
+                height: 100%;
+                cursor: pointer;
+                color: #6b7280;
+            }
+        }
+    }
+
+    .form-group label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--dark);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select,
+    .form-group .choices__inner {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--input-border);
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        background-color: var(--input-bg) !important;
+        color: var(--input-text);
+        transition: 0.25s;
+
+        &:focus {
+            border-color: var(--brand-primary);
+            box-shadow: 0 0 0 2px var(--brand-primary-soft);
+            background-color: var(--input-bg-focus);
+        }
+    }
+
+    // Choices.js dropdown customization
+    .form-group .choices__list--dropdown {
+        color: var(--dark);
+        box-shadow: none;
+        outline: none;
+        border-radius: 0.5rem;
+        border: 1px solid var(--border-soft);
+        background-color: var(--bg-white);
+    }
+    textarea {
+        min-height: 5rem;
+    }
+}
+
+.form-group-image {
+    position: relative;
+}
+
+.form-group-actions {
+    display: flex;
+    justify-content: space-between;
+    background-color: none;
+
+    .error-messages {
+        margin-top: 1rem;
+    }
+
+    .text-alert {
+        color: var(--error);
+        font-size: 0.9rem;
+    }
+}
+
+.image-editor-wrapper {
+    position: relative;
+    width: 160px;
+    height: 100px;
+    margin-top: 0;
+}
+
+.image-click-area {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border: 2px solid var(--input-border);
+    border-radius: 12px;
+    background-color: var(--bg-white);
+    overflow: hidden;
+    position: relative;
+
+    .img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        background-color: white;
+        pointer-events: none;
+    }
+}
+
+/* Text placeholder when there is no photo */
+.text-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a5a5a5;
+    height: 100%;
+}
+
+/* Dark layer with text on hover */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.image-click-area:hover .overlay {
+    opacity: 1;
+}
+
+.input-hidden {
+    display: none;
+}
+
+.text-help {
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    margin: 0;
+    font-size: 0.575rem;
+    color: #666;
+}
+
+/* ============================
+   FILA DE CAMPOS
+============================ */
+
+.form-row-flex {
+    display: flex;
+    gap: 30px;
+
+    .form-group:first-child {
+        flex: 0 0 520px;
+
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            resize: vertical;
+        }
+    }
+    .form-group:last-child {
+        flex: 0 0 240px;
+    }
+}
+
+/* ============================
+   CHOICES.JS (SELECT MÚLTIPLE)
+============================ */
+.choices__inner {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-soft);
+    outline: none;
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    min-height: 45px;
+}
+.choices.is-focused .choices__inner,
+.choices.is-open.is-flipped .choices__inner {
+    border-color: var(--brand-primary) !important;
+    box-shadow: 0 0 0 3px var(--brand-primary-soft) !important;
+    border-radius: 0.5rem !important;
+}
+
+.choices__input {
+    border: none !important;
+
+    &:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
+
+.choices__list--multiple .choices__item {
+    background-color: var(--brand-primary) !important;
+    border: 1px solid var(--brand-primary) !important;
+}
+
+.choices__list--dropdown {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-soft);
+    border-radius: 0.5rem;
+}
+
+/* Hover */
+.choices__list--dropdown {
+    .choices__item--selectable {
+        padding: 0.5rem 1rem;
+
+        &:hover {
+            background-color: var(--bg-light);
+        }
+        &.is-selected,
+            &.is-highlighted {
+                background-color: #e5e7eb;
+                html.dark & {
+                    background-color: #374151;
+                }
+            }
+    }
+}
+
+/* ============================
+   BOTONES
+============================ */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    .btn {
+        padding: 0.6rem 1.2rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        background-color: var(--brand-primary-soft);
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--brand-primary);
+        }
+    }
+
+    .btn-back {
+        padding: 0.6rem 1.2rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        background-color: var(--muted);
+
+        &:hover {
+            background-color: #4b5563;
+        }
+    }
+}
+
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px var(--input-bg) inset !important;
+    -webkit-text-fill-color: var(--input-text) !important;
+}
