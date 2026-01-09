@@ -225,6 +225,6 @@ class ProductController extends Controller
         $product->categories()->detach();
         $product->delete();
 
-        return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('admin.products.index')->with('success', __('Product deleted successfully.'));
     }
 }
