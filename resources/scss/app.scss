@@ -18,13 +18,13 @@
     --font-title: "Exo 2", sans-serif;
     --dark: #111827;
     --light: #ffffff;
-    --muted: #6b7280; /* Para textos secundarios o menos importantes */
+    --muted: #6b7280;
 
     /* State and feedback colors */
-    --success: #34d399; /* Tu green */
-    --error: #f87171; /* Tu red */
+    --success: #34d399; 
+    --error: #f87171; 
     --warning: #fba524;
-    --info: #2563eb; /* Tu blue */
+    --info: #2563eb;
     --info-hover: #1e40af;
 
     /* Variables to Dark Mode*/
@@ -32,13 +32,14 @@
     --main-text: var(--dark);
 
     /* Inputs */
-    --input-bg: #f6f6f6;
+    --input-bg: #ffffff;
     --input-text: #1f2937;
     --input-border: #e8ecef;
     --input-placeholder: #9ca3af;
     --input-bg-focus: #ffffff;
 }
 
+/* Dark Mode Variables */
 html.dark {
     --bg-light: #1e293b;
     --bg-white: #222b38;
@@ -151,6 +152,32 @@ html.dark {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 300px; 
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .form-column-left {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; 
+    }
+
+    .form-image {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        height: 100%;
+    }
+
+    .image-editor-wrapper .left {
+        width: 100%;
+        height: 100%;
+        min-height: 200px;
+    }
 
     .form-row {
         display: flex;
@@ -161,7 +188,6 @@ html.dark {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        flex: 1 1 200px;
         margin-bottom: 1.2rem;
 
         .password-wrapper,
@@ -225,11 +251,14 @@ html.dark {
     textarea {
         min-height: 5rem;
     }
+
+    .form-group-description {
+        grid-column: 1 / 2; 
+        grid-row: 2 / 3;
+    }
 }
 
-.form-group-image {
-    position: relative;
-}
+
 
 .form-group-actions {
     display: flex;
@@ -248,8 +277,8 @@ html.dark {
 
 .image-editor-wrapper {
     position: relative;
-    width: 160px;
-    height: 100px;
+    width: 100%;
+    height: 200px;
     margin-top: 0;
 }
 
@@ -323,21 +352,13 @@ html.dark {
    FILA DE CAMPOS
 ============================ */
 
-.form-row-flex {
+.form-row {
     display: flex;
-    gap: 30px;
+    gap: 30px; 
+    align-items: flex-start;
 
-    .form-group:first-child {
-        flex: 0 0 520px;
-
-        textarea {
-            width: 100%;
-            min-height: 100px;
-            resize: vertical;
-        }
-    }
-    .form-group:last-child {
-        flex: 0 0 240px;
+    .form-group {
+        flex: 1;
     }
 }
 

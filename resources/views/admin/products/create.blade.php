@@ -22,24 +22,25 @@
                 <div class="form-card"> 
                     <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <div class="form-grid">
+                            <div class="form-column-left">
+                                <div class="form-group">
+                                    <label for="name">{{ __('Name') }}:</label>
+                                    <input type="text" name="name" id="name" required>
+                                </div>
 
-                        <div class="form-group">
-                            <label for="name">{{ __('Name') }}:</label>
-                            <input type="text" name="name" id="name" placeholder="{{ __('Sneaker name') }}" value="{{ old('name') }}" required>
-                        </div>
-
-                        <div class="form-row-flex">
-                            <div class="form-group">
-                                <label for="description">{{ __('Description') }}:</label>
-                                <textarea name="description" id="description" placeholder="{{ __('Detailed description') }}">{{ old('description') }}</textarea>
+                                <div class="form-group">
+                                    <label for="description">{{ __('Description') }}:</label>
+                                    <textarea name="description" id="description"></textarea>
+                                </div>
                             </div>
 
-                            <div class="form-group form-group-image">
-                                <label class="label-primary">{{ __('Product Image') }}:</label>
-    
-                                <div class="image-editor-wrapper">
+                            <div class="form-group form-image">
+                                <label>{{ __('Product Image') }}:</label>
+
+                                <div class="image-editor-wrapper left">
                                     <input type="file" name="img" id="img" class="input-hidden" accept="image/*" onchange="previewImage(event)">
-        
+            
                                     <label for="img" class="image-click-area" title="Click to upload the image">
                                             <div id="text-placeholder" class="text-placeholder">
                                                 <span>+ {{ __('Upload Image') }}</span>
@@ -49,7 +50,7 @@
                                         </div>
                                     </label>
                                 </div>
-                                <small class="text-help">{{ __('Click on the image to replace it.') }}</small>
+                                    <small class="text-help">{{ __('Click on the image to replace it.') }}</small>
                             </div>
                         </div>
 
