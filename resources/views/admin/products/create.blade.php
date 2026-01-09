@@ -23,6 +23,7 @@
                     <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-grid">
+                            {{-- Left column - Details --}}
                             <div class="form-column-left">
                                 <div class="form-group">
                                     <label for="name">{{ __('Name') }}:</label>
@@ -35,6 +36,7 @@
                                 </div>
                             </div>
 
+                            {{-- Right column: Image --}}
                             <div class="form-group form-image">
                                 <label>{{ __('Product Image') }}:</label>
 

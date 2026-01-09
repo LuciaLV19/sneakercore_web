@@ -29,38 +29,44 @@
                         @csrf
                         @method('PUT')
 
-                        <div class="form-group">
-                            <label for="name">{{ __('Name') }}:</label>
-                            <input type="text" name="name" id="name" placeholder="{{ __('Sneaker name') }}" 
-                                   value="{{ old('name', $product->name) }}" required>
-                        </div>
+                        <div class="form-grid">
+                            
+                            {{-- Left column - Details --}}
+                            <div class="form-column-left">
+                                <div class="form-group">
+                                    <label for="name">{{ __('Name') }}:</label>
+                                    <input type="text" name="name" id="name" placeholder="{{ __('Sneaker name') }}" 
+                                           value="{{ old('name', $product->name) }}" required>
+                                </div>
 
-                        <div class="form-row-flex">
-                            <div class="form-group">
-                                <label for="description">{{ __('Description') }}:</label>
-                                <textarea name="description" id="description" placeholder="{{ __('Detailed description') }}">{{ old('description', $product->description) }}</textarea>
+                                <div class="form-group">
+                                    <label for="description">{{ __('Description') }}:</label>
+                                    <textarea name="description" id="description" placeholder="{{ __('Detailed description') }}">{{ old('description', $product->description) }}</textarea>
+                                </div>
                             </div>
 
-                            <div class="form-group form-group-image">
+                            {{-- Right column: Image --}}
+                            <div class="form-group form-image">
                                 <label class="label-primary">{{ __('Product Image') }}</label>
-    
-                                <div class="image-editor-wrapper">
-                                    <input type="file" name="img" id="img" class="input-hidden" accept="image/*" onchange="previewImage(event)">
         
+                                <div class="image-editor-wrapper left">
+                                    <input type="file" name="img" id="img" class="input-hidden" accept="image/*" onchange="previewImage(event)">
+            
                                     <label for="img" class="image-click-area" title="{{ __('Click to change the image')}}">
                                         @if ($product->img)
-                                            <img id="main-preview" src="{{ asset('images/products/' . $product->img) }}" alt="{{ $product->name }}" class="img">
+                                            <img id="main-preview" src="{{ asset('images/products/' . $product->img) }}" alt="{{ $product->name }}" class="img object-cover w-full h-full rounded-lg">
                                         @else
                                             <div id="text-placeholder" class="text-placeholder">
                                                 <span>+ {{ __('Upload Image') }}</span>
                                             </div>
                                         @endif
+                                        
                                         <div class="overlay">
                                             <span>{{ __('Change Image') }}</span>
                                         </div>
                                     </label>
                                 </div>
-                                <small class="text-help">{{ __('Click on the image to replace it.') }}</small>
+                                <small class="text-help mt-2 block">{{ __('Click on the image to replace it.') }}</small>
                             </div>
                         </div>
 
